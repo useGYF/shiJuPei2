@@ -16,18 +16,18 @@
         </select>
       </li>
     </ol>
-    <ol class="vdworp" v-show="shiping" :style="'top:'+(kongqi ? 38*(mlength+1)+3 : 38*2+3)+'px'">
-      <li style="width: 136px;" v-for="(item,index) in JKtargets" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OVDClick">
-        <img :src="item.src" title=""/>
-        <span>{{item.value}}</span>
-      </li>
-    </ol>
-    <ol class="jkworp" v-show="jiankong" :style="'top:'+(shiping ? (kongqi ? 38*(mlength+3)+6 : 38*4+6) : (kongqi ? 38*(mlength+2)+6 : 38*3+6))+'px'">
-      <li style="width: 136px;" v-for="(item,index) in ZHtargets" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
-        <img :src="item.src" title=""/>
-        <span>{{item.value}}</span>
-      </li>
-    </ol>
+    <!--<ol class="vdworp" v-show="shiping" :style="'top:'+(kongqi ? 38*(mlength+1)+3 : 38*2+3)+'px'">-->
+      <!--<li style="width: 136px;" v-for="(item,index) in JKtargets" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OVDClick">-->
+        <!--<img :src="item.src" title=""/>-->
+        <!--<span>{{item.value}}</span>-->
+      <!--</li>-->
+    <!--</ol>-->
+    <!--<ol class="jkworp" v-show="jiankong" :style="'top:'+(shiping ? (kongqi ? 38*(mlength+3)+6 : 38*4+6) : (kongqi ? 38*(mlength+2)+6 : 38*3+6))+'px'">-->
+      <!--<li style="width: 136px;" v-for="(item,index) in ZHtargets" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">-->
+        <!--<img :src="item.src" title=""/>-->
+        <!--<span>{{item.value}}</span>-->
+      <!--</li>-->
+    <!--</ol>-->
 
     <main-handle></main-handle>
   </div>
@@ -56,20 +56,21 @@
             src: 'static/imgs/main/left.png',
             checkedSrc: 'static/imgs/main/right.png',
             checked:false
-          },{
-            name: 'layer_jk',
-            value: '实时监控',
-            src: 'static/imgs/main/left.png',
-            checkedSrc: 'static/imgs/main/right.png',
-            checked:false
           },
-          {
-            name: 'layer_zh',
-            value: '指挥调度',
-            src: 'static/imgs/main/left.png',
-            checkedSrc: 'static/imgs/main/right.png',
-            checked:false
-          }
+          //   {
+          //   name: 'layer_jk',
+          //   value: '实时监控',
+          //   src: 'static/imgs/main/left.png',
+          //   checkedSrc: 'static/imgs/main/right.png',
+          //   checked:false
+          // },
+          // {
+          //   name: 'layer_zh',
+          //   value: '指挥调度',
+          //   src: 'static/imgs/main/left.png',
+          //   checkedSrc: 'static/imgs/main/right.png',
+          //   checked:false
+          // }
 
         ],
         //实时监测
@@ -159,7 +160,7 @@
             src: 'static/imgs/main/m_cx.png',
             checkedSrc: 'static/imgs/main/cx_c.png',
             checked:false,
-            visible:true,
+            visible:false,
             childs: [{
               text: 'PM2.5',
               fieldName: 'pm25'
@@ -178,7 +179,7 @@
             src: 'static/imgs/main/gd.png',
             checkedSrc: 'static/imgs/main/gd_c.png',
             checked:false,
-            visible:false,
+            visible:true,
             childs:[{
               text: 'PM2.5',
               fieldName: 'pm25'
@@ -194,7 +195,7 @@
             src: 'static/imgs/main/qy.png',
             checkedSrc: 'static/imgs/main/qy_c.png',
             checked:false,
-            visible:true,
+            visible:false,
             childs:[{
               text: '烟尘',
               fieldName: 'smokeStatus'

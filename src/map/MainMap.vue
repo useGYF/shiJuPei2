@@ -21,19 +21,19 @@
       <div id="search_char"></div>
     </el-dialog>
     <!--弹出框面板-->
-    <el-dialog :visible.sync="wachiVisible" top="6vh" width="85%" :before-close="wachhandleClose">
-      <div class="dianlode">
-        <!---->
-        <largedata v-show="clokue === 'WRWDB'"></largedata>
-        <fixedscs v-show="clokue === 'GDYTJ'"></fixedscs>
-        <airstation v-show="clokue === 'XZKQZ'"></airstation>
-        <meanratio v-show="clokue === 'SKJZB'"></meanratio>
-      </div>
-    </el-dialog>
+    <!--<el-dialog :visible.sync="wachiVisible" top="6vh" width="85%" :before-close="wachhandleClose">-->
+      <!--<div class="dianlode">-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--<largedata v-show="clokue === 'WRWDB'"></largedata>-->
+        <!--<fixedscs v-show="clokue === 'GDYTJ'"></fixedscs>-->
+        <!--<airstation v-show="clokue === 'XZKQZ'"></airstation>-->
+        <!--<meanratio v-show="clokue === 'SKJZB'"></meanratio>-->
+      <!--</div>-->
+    <!--</el-dialog>-->
     <!--<history-handle></history-handle>-->
-    <div class="left-bottom">
-      <revolving-menu></revolving-menu>
-    </div>
+    <!--<div class="left-bottom">-->
+      <!--<revolving-menu></revolving-menu>-->
+    <!--</div>-->
   </div>
 </template>
 <script>
