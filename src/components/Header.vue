@@ -8,7 +8,7 @@
             </div>
            <!---->
             <ul class="bnav">
-                <li><a href="#/likewinter">首页</a></li>
+                <li><a href="#/">实时监测</a></li>
                 <!--<li>-->
                     <!--<a style="padding: 0 10px" href="#/">-->
                         <!--实时监测-->

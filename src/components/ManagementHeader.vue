@@ -10,7 +10,7 @@
             <ul class="bnav">
             	<div>
                     <!--<img src="../assets/img/sy-z.png" alt="">-->
-                    <a href="#/likewinter">首页</a>
+                    <a href="#/">实时监测</a>
                 </div>
                 <div>
                     <!--系统后台-退出系统-->
