@@ -333,13 +333,13 @@
         let sle = {};
         switch (type) {
           case 0:
-            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#0070CE', fillColor: '#2D96EF', fillOpacity: 0.2};
+            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#3498db', fillColor: '#3498db', fillOpacity: 0.2};
             break;
           case 1:
-            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#1C7B2A', fillColor: '#6FB779', fillOpacity: 0.2};
+            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#1abc9c', fillColor: '#1abc9c', fillOpacity: 0.2};
             break;
           case 2:
-            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#8441c9', fillColor: '#E8AAFF', fillOpacity: 0.2};
+            sle = {strokeWeight: 1, strokeStyle: 'dashed', strokeColor: '#e67e22', fillColor: '#e67e22', fillOpacity: 0.2};
             break;
         }
         return sle;
