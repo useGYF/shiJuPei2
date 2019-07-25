@@ -656,8 +656,8 @@
                         width: 100%;
                         border-bottom: solid 1px #ccc;
                         .bai {
-                            color: #4696FF;
-                            border-bottom: solid 2px #4696FF;
+                            color: #1b9d33;
+                            border-bottom: solid 2px #1b9d33;
                         }
                         a {
 
@@ -705,7 +705,7 @@
                     padding-left: 20px;
                     text-align: left;
                     margin-left: 16px;
-                    border-left: solid 3px #4696FF;
+                    border-left: solid 3px #1b9d33;
                 }
       .Second {
                     width: 100%;

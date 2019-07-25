@@ -431,7 +431,7 @@
                             border: none;
                             width: 80px;
                             height: 34px;
-                            background: #4696FF;
+                            background: #1b9d33;
                             color: #fff;
                             border-radius: 4px;
                         }

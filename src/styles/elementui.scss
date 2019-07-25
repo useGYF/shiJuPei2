@@ -2,7 +2,13 @@
 .el-icon-close:hover {
   cursor: pointer;
 }
-
+.el-button{
+  background: #1b9d33;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #1b9d33!important;
+    color: #FFF;
+}
 .el-progress-circle {
   width: 80px !important;
   height: 80px !important;

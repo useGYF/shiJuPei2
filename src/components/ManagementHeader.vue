@@ -82,7 +82,7 @@
         .navbox{
             width: 100%;
             height: 56px;
-            background: #2494F2;
+            background: #1b9d33;
             position: absolute;
             top: 0;
             left: 0;

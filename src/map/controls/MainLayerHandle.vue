@@ -2,13 +2,13 @@
   <div class="main-layer">
     <div class="main-layer-handle">筛选监测点</div>
     <ul class="warp-box">
-      <li v-for="(item,index) in targets" :id="('Litem_'+ index)" :style="'background:'+(item.checked ? '#2494F2' : 'rgba(0, 0, 0, 0.6)')" :data-index="index" :data-type="item.name" @click="liClick">
+      <li v-for="(item,index) in targets" :id="('Litem_'+ index)" :style="'background:'+(item.checked ? '#1b9d33' : 'rgba(0, 0, 0, 0.6)')" :data-index="index" :data-type="item.name" @click="liClick">
         <img style="width: 0" :src="item.checked ? item.checkedSrc : item.src" title=""/>
         <span class="warp-botn">{{item.value}}</span>
       </li>
     </ul>
     <ol class="kqworp" v-show="kongqi">
-      <li style="width: 136px;" v-for="(item,index) in JCtargets" v-show="item.visible" :style="'background:'+(item.checked ? '#2494F2' : 'rgba(0, 0, 0, 0.6)')" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
+      <li style="width: 136px;" v-for="(item,index) in JCtargets" v-show="item.visible" :style="'background:'+(item.checked ? '#1b9d33' : 'rgba(0, 0, 0, 0.6)')" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
         <img :src="item.src" title=""/>
         <span>{{item.value}}</span>
         <select v-show="item.checked" title="" @change="targetChanged" :data-index="index" :style="'display:'+ (item.childs.length ? 'line-block' : 'none')">
@@ -335,7 +335,7 @@
 
         let hasChecked = false;
         item.childs && (item.childs.length && (item.checked = !item.checked));
-        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = 'rgba(0, 0, 0, 0.6)') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#2494F2', hasChecked = true);
+        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = 'rgba(0, 0, 0, 0.6)') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#1b9d33', hasChecked = true);
 
         let hasParentChecked = this.hasCheckedChildElement(parentName) || false;
         this.setParentStates(parentIndex, hasParentChecked, parentName);
@@ -360,7 +360,7 @@
         if (parseInt(index) === 0 || parseInt(index) === 1) {
               t.aclink = !t.aclink;
         }
-        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = 'rgba(0, 0, 0, 0.6)') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#2494F2', hasChecked = true);
+        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = 'rgba(0, 0, 0, 0.6)') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#1b9d33', hasChecked = true);
         let hasParentChecked = this.hasCheckedChildElement('SP') || false;
         this.setParentStates(parentIndex, hasParentChecked, parentName);
         bus.$emit('targetMainLayer', type, hasChecked,from);
@@ -395,7 +395,7 @@
         if (element && element.length) {
           let el = element[0];
           let imgElement = el.querySelector('img');
-          !hasChecked ? el.style.backgroundColor = 'rgba(0, 0, 0, 0.6)' : el.style.backgroundColor = '#2494F2';
+          !hasChecked ? el.style.backgroundColor = 'rgba(0, 0, 0, 0.6)' : el.style.backgroundColor = '#1b9d33';
         }
       },
 
@@ -469,15 +469,15 @@
               });
               bus.$emit('menuative', '六参');
               break;
-            case 'layer_cgq_voc':
-              // this.$store.state.menuData.unshift({
-              //   title: 'VOC',
-              //   title_tx: 'VOC监测',
-              //   show_xs: 'layer_cgq_voc',
-              //   url: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png',
-              //   url_one: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png'
-              // });
-              //bus.$emit('menuative', 'VOC');
+            case 'layer_cgq_vocs':
+              this.$store.state.menuData.unshift({
+                title: 'VOC',
+                title_tx: 'VOC监测',
+                show_xs: 'layer_cgq_vocs',
+                url: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png'
+              });
+              bus.$emit('menuative', 'VOC');
               break;
             case 'layer_cx':
               this.$store.state.menuData.unshift({
@@ -701,7 +701,7 @@
   .main-layer-handle {
     width: 148px;
     background: #fff;
-    color: #2494F2;
+    color: #1b9d33;
     font-weight: bold;
     line-height: 38px;
     visibility: hidden;
