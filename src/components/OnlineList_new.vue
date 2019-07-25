@@ -32,11 +32,11 @@
                                 stripe
                                 highlight-current-row
                                 @current-change="RowCurrentChange"
-                                style="width: 400px">
+                            >
                             <el-table-column
                                     property="ranking"
                                     label="排名"
-                                    width="80">
+                                    width="54">
                             </el-table-column>
                             <el-table-column
                                     property="Grid"
