@@ -46,7 +46,7 @@
                             <el-table-column
                                     property="name"
                                     label="名称"
-                                    width="160">
+                                    >
                             </el-table-column>
                             <el-table-column
                                     property="aqi"
