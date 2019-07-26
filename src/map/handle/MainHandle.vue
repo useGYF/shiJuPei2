@@ -481,7 +481,6 @@
           let url = lsUrl[i];
           let params = {url: url + (reqPms ? ('?' + reqPms) : ''), type: requestType, pms: postPms};
           RequestHandle.request(params, function (result) {
-            debugger;
             if (result.status) {
               let rtValue = [];
               let dt = undefined;
