@@ -1,30 +1,58 @@
 export default {
-  development: [{
-    site:'http://117.119.97.150',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
-    port: ':8063',//':8063',
-    path: '/'
-  },{
-    site: 'http://117.119.97.150',
-    port: ':8073',
-    path: '/'
-  },{
-    site: 'http://10.6.80.93',//'http://117.119.97.150',//
-    port: ':8061',//':8061',//
-    path: '/'
-  }],
-  release: [{
-    site:'http://124.238.180.224',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
-    port: ':8011',//':8063',
-    path: '/'
-  },{
-    site: 'http://gkpt.zq12369.com',
-    port: ':8015',
-    path: '/'
-  },{
-    site: 'http://124.238.180.224',//'http://117.119.97.150',//
-    port: ':5523',//':8061',//
-    path: '/'
-  }],
+  development: [
+  // {
+  //   site:'http://117.119.97.150',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
+  //   port: ':8063',//':8063',
+  //   path: '/'
+  // },{
+  //   site: 'http://117.119.97.150',
+  //   port: ':8073',
+  //   path: '/'
+  // },{
+  //   site: 'http://10.6.80.93',//'http://117.119.97.150',//
+  //   port: ':8061',//':8061',//
+  //   path: '/'
+  // }],
+  // release: [{
+  //   site:'http://124.238.180.224',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
+  //   port: ':8011',//':8063',
+  //   path: '/'
+  // },{
+  //   site: 'http://gkpt.zq12369.com',
+  //   port: ':8015',
+  //   path: '/'
+  // },{
+  //   site: 'http://124.238.180.224',//'http://117.119.97.150',//
+  //   port: ':5523',//':8061',//
+  //   path: '/'
+  // }
+    {
+        site:'http://120.52.157.162',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
+        port: ':4016',//':8063',
+        path: '/'
+      },{
+        site: 'http://117.119.97.150',
+        port: ':8073',
+        path: '/'
+      },{
+        site: 'http://10.6.80.93',//'http://117.119.97.150',//
+        port: ':8061',//':8061',//
+        path: '/'
+      }],
+      release: [{
+        site:'http://120.52.157.162',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
+        port: ':4016',//':8063',
+        path: '/'
+      },{
+        site: 'http://gkpt.zq12369.com',
+        port: ':8015',
+        path: '/'
+      },{
+        site: 'http://124.238.180.224',//'http://117.119.97.150',//
+        port: ':5523',//':8061',//
+        path: '/'
+      }
+  ],
   getRequestUrlByType(type){
     let a = 1;
     console.log(process.env.API_ROOT);
