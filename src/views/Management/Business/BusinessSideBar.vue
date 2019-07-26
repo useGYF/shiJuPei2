@@ -3,59 +3,12 @@
     <div class="businessmanagement">
     	<!--左侧导航部分-->
     	<div class="left" v-if="isDuty">
-
-			<el-col :span="8">
-				<el-col :span="8">
-					<el-menu default-active="Case-Review" :unique-opened=true router  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-
-						<el-submenu index="active2" >
-							<template slot="title"><i class="icon-aj"></i>案件</template>
-							<el-menu-item index="Case-Review">案件处理</el-menu-item>
-							<el-menu-item index="Case-Type">案件类型占比</el-menu-item>
-							<el-menu-item index="Case-Count">案件处理率统计</el-menu-item>
-              <!--<el-menu-item index="Case-Input">案件录入</el-menu-item>-->
-						</el-submenu>
-						<el-submenu index="active3" >
-							<template slot="title"><i class="icon-zhdd"></i>指挥调度</template>
-							<el-menu-item index="Manage-Record">调度记录</el-menu-item>
-						</el-submenu>
-						<el-submenu index="active4" >
-							<template slot="title"><i class="icon-jxkh"></i>绩效考核</template>
-							<el-menu-item index="Star-Patroller">明星巡查员</el-menu-item>
-							<el-menu-item index="Report-Patroller">通报巡查员</el-menu-item>
-							<el-menu-item index="Sign-Count">签到统计</el-menu-item>
-							<el-menu-item index="Report-Search">上报查询</el-menu-item>
-						</el-submenu>
-						<el-submenu index="active1" >
-							<template slot="title"><i class="icon-ywsj"></i>业务数据</template>
-							<el-menu-item index="Business-Warning">预警信息管理</el-menu-item>
-							<el-menu-item index="Business-TVOCVal">TVOC指标管理</el-menu-item>
-							<el-menu-item index="Business-WarningVal">预警值管理</el-menu-item>
-							<!--<el-menu-item index="Business-Presentation">官方报告</el-menu-item>-->
-							<!--<el-menu-item index="Business-Economic">经济数据管理</el-menu-item>-->
-							<el-menu-item index="Business-DayData" v-if="false">日数据管理</el-menu-item>
-							<el-menu-item index="Business-Operation">监测点管理</el-menu-item>
-							<el-menu-item index="Business-Duty">责任部门管理</el-menu-item>
-							<el-menu-item index="Business-Patroller">巡查员管理</el-menu-item>
-							<el-menu-item index="Business-Video">视频类型管理</el-menu-item>
-							<el-menu-item index="Business-Pollution">企业污染源</el-menu-item>
-							<el-menu-item index="Business-Version">版本管理</el-menu-item>
-							<!--<el-menu-item index="Business-Hotel">饭店</el-menu-item>-->
-							<!--<el-menu-item index="Business-Slite">工地</el-menu-item>-->
-							<!--<el-menu-item index="Business-Car">渣土车</el-menu-item>-->
-						</el-submenu>
-					</el-menu>
-				</el-col>
-			</el-col>
-		</div>
-		<div class="left" v-else>
-
 			<el-col :span="8">
 				<el-col :span="8">
 					<el-menu default-active="Case-Review" :unique-opened=true router  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
 						<el-submenu index="active2" >
 							<template slot="title"><i class="icon-aj"></i>案件管理</template>
-							<el-menu-item index="Case-Review">案件审核</el-menu-item>
+							<el-menu-item index="Case-Review">案件</el-menu-item>
 						</el-submenu>
 					</el-menu>
 				</el-col>
