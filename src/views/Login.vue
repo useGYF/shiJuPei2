@@ -133,8 +133,8 @@
                   type: 'success'
                 });
                 setTimeout(function () {
-                  //_this.$router.push('/')
-                  _this.$router.push('/likewinter');
+                  _this.$router.push('/')
+                 //_this.$router.push('/likewinter');
                 }, 2000)
               } else {
                 _this.$message({

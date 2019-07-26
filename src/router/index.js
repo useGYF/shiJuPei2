@@ -41,11 +41,11 @@ Vue.use(Router)
 export default new Router({
     routes: [
         //登录页面
-        // {
-        //     path: '/Login',
-        //     name: 'Login',
-        //     component: Login
-        // },
+        {
+            path: '/Login',
+            name: 'Login',
+            component: Login
+        },
         //实时监控页面（主页面）
         {
             path: '/',

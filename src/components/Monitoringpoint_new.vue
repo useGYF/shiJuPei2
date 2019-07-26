@@ -6,8 +6,8 @@
                         <div class="tables">
                             <!--选项-->
                             <a id="shishi" @click="RealTimeFatchtoo()" class="bai">实时</a>
-                            <a id="leiji" @click="CumulativeFatchtoo()">累计</a>
-                            <font class="time2">更新时间：{{NewUptime}}</font>
+                            <!-- <a id="leiji" @click="CumulativeFatchtoo()">累计</a>
+                            <font class="time2">更新时间：{{NewUptime}}</font> -->
                         </div>
                     </div>
 
