@@ -2,17 +2,7 @@
     <div class="Paneldataindex">
         <!--首页面板-->
         <div id="list">
-            <div class="gensui">
-
-                <div class="line_top">
-                    <toolbar>
-                        <map-handle slot="toors"></map-handle>
-                    </toolbar>
-                </div>
-                <div class="line_bottom" v-show="Legendswtch">
-                    <tone-color></tone-color>
-                </div>
-            </div>
+            <toolbar style="display: none"></toolbar>
             <div class="panel">
                 <!--面板切换视图区域-->
                 <router-view></router-view>
@@ -191,17 +181,17 @@
                 $('#list')[0].style.transition = 'all 50ms';
                 $('#list')[0].style.WebkitTransform = "translate(-467px)";
                 $('#list')[0].style.transform = "translate(-467px)";
-                $('.meun_right')[0].style.right = '467px';
-                $('.line_bottom')[0].style.left = '-464px';//'-342px';
-                $('.line_top')[0].style.left = '480px';
+                // $('.meun_right')[0].style.right = '467px';
+                // $('.line_bottom')[0].style.left = '-464px';//'-342px';
+                // $('.line_top')[0].style.left = '480px';
             },
             //动画002收回
             shouhui(){
                 $('#list')[0].style.transition = 'all 500ms';
                 $('#list')[0].style.transform = "translate(0)";
-                $('.meun_right')[0].style.right = '0px';
-                $('.line_bottom')[0].style.left = '466px';//'-309px';
-                $('.line_top')[0].style.left = '477px';
+                // $('.meun_right')[0].style.right = '0px';
+                // $('.line_bottom')[0].style.left = '466px';//'-309px';
+                // $('.line_top')[0].style.left = '477px';
             },
             //table点击事件
             RowCurrentChange(val) {

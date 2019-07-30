@@ -3,13 +3,13 @@
         <div class="navbox">
             <!--环境监测-->
             <div class="logo">
-                <img src="../assets/img/logo1.png" alt="logo">
-                <a style="color: #fff;font-size:21px;font-weight: 500;line-height: 56px;font-family: 'Microsoft YaHei' ">大数据管理平台</a>
+                <!-- <img src="../assets/img/logo1.png" alt="logo"> -->
+                <a style="color: #fff;font-size:21px;font-weight: 500;line-height: 56px;padding-left:30px;font-family: 'Microsoft YaHei' ">大数据管理平台</a>
             </div>
            <!---->
             <ul class="bnav">
-                <li style="width: 136px;" v-for="(item,index) in JCtargets" v-show="item.visible" :style="'color:#fff;background:'+(item.checked ? '#00EE00' : '#1b9d33')" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
-                <img :src="item.src" title=""/>
+                <li style="width: 136px;" v-for="(item,index) in JCtargets" v-show="item.visible" :style="'color:#fff;background:'+(item.checked ? '#436EEE' : '#1b9d33')" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
+                <img style="display: none" :src="item.src" title=""/>
                 <span>{{item.value}}</span>
               </li>
                 <!--系统后台-退出系统-->
@@ -291,7 +291,7 @@ import MainHandle from '@/map/handle/MainHandle'
 
         let hasChecked = false;
         item.childs && (item.childs.length && (item.checked = !item.checked));
-        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = '#1b9d33') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#00EE00', hasChecked = true);
+        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = '#1b9d33') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#436EEE', hasChecked = true);
 
         bus.$emit('targetMainLayer', type, hasChecked);
         this.rightPanel(hasChecked,type);

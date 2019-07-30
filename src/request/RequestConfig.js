@@ -162,11 +162,13 @@ export default {
         break;
       case 'GSCITYPOLLUTION':
         cf = apiConfig[0];
-        url = cf.site + cf.port + cf.path + 'api/Monitoring/GetJjjAnd226MonitorList';
+        //url = cf.site + cf.port + cf.path + 'api/Monitoring/GetJjjAnd226MonitorList';
+        url = 'http://120.52.157.162:8070/' + 'api/Monitoring/GetJjjAnd226MonitorList';
         break;
       case 'GSCITYPOLLUTIONCHART':
         cf = apiConfig[0];
-        url = cf.site + cf.port + cf.path + 'api/Monitoring/GetJjjAnd226Detail';
+        //url = cf.site + cf.port + cf.path + 'api/Monitoring/GetJjjAnd226Detail';
+        url = 'http://120.52.157.162:8070/' + 'api/Monitoring/GetJjjAnd226Detail';
         break;
       case 'MAINSIXPOLLUTION':
         cf = apiConfig[0];
