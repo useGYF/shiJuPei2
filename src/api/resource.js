@@ -15,7 +15,7 @@ const apiconfig = [
   },
   {
     devn: 'http://120.52.157.162:4016',//正式001
-    devc: 'http://120.52.157.162:4016',//正式
+    devc: 'http://120.52.157.162:4020',//正式
     devy: 'http://gkpt.zq12369.com:8015',//正式(大气源清单)
     devm: 'http://gkpt.zq12369.com:8016',//正式001
     devf: 'http://124.238.180.224:8012',//沙尘，雾霾图片
@@ -61,7 +61,7 @@ const apilangfangTDK = {
   GetsourcetypeAllInfo: apiconfig[icode].devc + '/servicePlatform/enterprise/allInfo?',//静态原清单1
   GetallInfoBySourceType: apiconfig[icode].devc + '/servicePlatform/enterprise/allInfoBySourceType?',//静态原清单2
   GetProportion: apiconfig[icode].devn + '/api/CheckCounty/GetProportion?type=',//同期变化率
-  GetUserLogin: apiconfig[icode].devc + '/aqi/Login/ZCBLogin',//登录接口
+  GetUserLogin: apiconfig[icode].devc + '/guan/caseLogin/login',//登录接口
   GetCompanyStatistics: apiconfig[icode].devn + '/api/Company/GetCompanyStatistics',//企业污染统计
   GetEmergencyList: apiconfig[icode].devn + '/api/EmergencyPlan/GetEmergencyList',//应急清单....
   GetElectricityChart: apiconfig[icode].devn + '/api/Winter/GetElectricityChart',//用电量
