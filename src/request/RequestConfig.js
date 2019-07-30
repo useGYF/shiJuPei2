@@ -93,8 +93,8 @@ export default {
         break;
       case 'VOCPOLLUTION':
         cf = apiConfig[0];
-        // url = 'http://117.119.97.150:8063/api/XhHb/GetXhHbPoint';
-        url = cf.site + cf.port + cf.path + 'api/XhHb/GetXhHbPointsVoc';
+        url = 'http://gkpt.zq12369.com:8016/api/XhHb/GetXhHbPoint';
+        //url = cf.site + cf.port + cf.path + 'api/XhHb/GetXhHbPointsVoc';
         break;
       case 'SENSECHART':
         cf = apiConfig[0];
@@ -102,8 +102,8 @@ export default {
         break;
       case 'VOCCHART':
         cf = apiConfig[0];
-        // url = 'http://117.119.97.150:8063/api/XhHb/GetXhHbHistory';
-        url = cf.site + cf.port + cf.path + 'api/XhHb/GetXhHistoriesVoc';
+        url = 'http://gkpt.zq12369.com:8016/api/XhHb/GetXhHistoriesVoc';
+        //url = cf.site + cf.port + cf.path + 'api/XhHb/GetXhHistoriesVoc';
         break;
       case 'DUSTPOLLUTION':
         cf = apiConfig[0];

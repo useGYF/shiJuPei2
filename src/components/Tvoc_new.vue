@@ -2,58 +2,28 @@
     <div class="tvoc">
         <!--TVOC右侧面板-->
         <div class="main">
-                    <!--选项查询-->
-                    <div class="first">
-                        <el-tabs v-model="activeNametoc" @tab-click="handleClick">
-                            <el-tab-pane label="全市" name="first2"></el-tab-pane>
-                            <el-tab-pane label="开发区" name="second2"></el-tab-pane>
-                            <el-tab-pane label="安次区" name="third2"></el-tab-pane>
-                        </el-tabs>
-                    </div>
-                    <!--排名-->
-                    <div class="table_container">
-                        <el-table
-                                :data="tableData"
-                                border
-                                stripe
-                                highlight-current-row
-                                @current-change="RowCurrentChange"
-                                style="width: 400px">
-                            <el-table-column
-                                    property="ranking"
-                                    label="排名"
-                                    width="80">
-                            </el-table-column>
-                            <el-table-column
-                                    property="gridName"
-                                    label="网格名称"
-                                    width="80">
-                            </el-table-column>
-                            <el-table-column
-                                    property="pointName"
-                                    label="名称"
-                                    width="160">
-                            </el-table-column>
-                            <el-table-column
-                                    property="tVOC_V"
-                                    label="TVOC"
-                                   >
-                            </el-table-column>
-                        </el-table>
-                        <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                            <el-pagination
-                                    background
-                                    @current-change="handleCurrentChange"
-                                    :current-page="currentPage"
-                                    :page-size="pagesize"
-                                    layout="total, prev, pager, next"
-                                    :total="totalCount">
-                            </el-pagination>
-                        </div>
-                    </div>
+            <!--选项查询-->
+            <div class="first">
+                <el-tabs v-model="activeNametoc" @tab-click="handleClick">
+                    <el-tab-pane label="全市" name="first2"></el-tab-pane>
+                    <!-- <el-tab-pane label="开发区" name="second2"></el-tab-pane>
+                    <el-tab-pane label="安次区" name="third2"></el-tab-pane> -->
+                </el-tabs>
+            </div>
+            <!--排名-->
+            <div class="table_container">
+                <el-table :data="tableData" border stripe :row-class-name="tableRowClassName" @current-change="RowCurrentChange" style="width: 400px">
+                    <el-table-column property="ranking" label="排名" width="80"></el-table-column>
+                    <el-table-column property="gridName" label="网格名称" width="80"></el-table-column>
+                    <el-table-column property="pointName" label="名称" width="160"></el-table-column>
+                    <el-table-column property="tVOC_V" label="TVOC"></el-table-column>
+                </el-table>
+                <div class="Pagination" style="text-align: left;margin-top: 10px;">
+                    <el-pagination background @current-change="handleCurrentChange" :current-page="currentPage" :page-size="pagesize" layout="total, prev, pager, next" :total="totalCount"></el-pagination>
                 </div>
+            </div>
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -103,6 +73,15 @@
                     return value2 - value1
                 }
             },
+            //颜色列表
+            tableRowClassName({row, rowIndex}) {
+                if (rowIndex%2 === 0) {
+                    return 'warning-row';
+                } else {
+                    return 'success-row';
+                }
+                return '';
+            },
             //切换事件
             handleClick(tab, event) {
                 //
@@ -134,7 +113,7 @@
                 this.data = data;
                 this.allData = [];
                 let i = 1;
-                if(this.type == '全市'){
+                //if(this.type == '全市'){
                     let dt1 = data;
                     //console.log(dt1)
                     dt1.forEach(item => {
@@ -150,24 +129,8 @@
                         this.allData.push(tableData);
                     })
                     //地图传送线
-                    !hasFirst && bus.$emit('loadCumulative', dt1, 'layer_cgq_voc', 'tVOC_V', 'pointName');
-                }else{
-                    let dt1 = this.getPointByType(this.type);
-                    dt1.forEach(item => {
-                        const tableData = {};
-                        tableData.ranking = i++;//排名
-                        tableData.pointName = item.pointName;//名称
-                        tableData.gridName = item.gridName;//网格
-                        tableData.tVOC_V = item.tVOC_V;//数值
-                        tableData.id = item.stationId;//id
-                        tableData.latitude = item.latitude;//纬度
-                        tableData.longitude = item.longitude;//经度
-                        tableData.pianQu = item.pianQu;//片区
-                        this.allData.push(tableData);
-                    });
-                    //地图传送线
-                    bus.$emit('loadCumulative', dt1, 'layer_cgq_voc', 'tVOC_V', 'pointName');
-                }
+                   bus.$emit('loadCumulative', dt1, 'layer_cgq_voc', 'tVOC_V', 'pointName');
+                //}
 
             },
             //table点击事件

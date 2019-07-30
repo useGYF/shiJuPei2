@@ -100,7 +100,7 @@ const apilangfangTDK = {
   ExcelOverLimitStatistics: apiconfig[icode].devn + '/api/Company/ExcelOverLimitStatistics?',//企业超标统计导出
   GetcompanyListTablaData: apiconfig[icode].devn + '/api/Company/GetcompanyList',//获取企业列表
   GetQxHourRank: apiconfig[icode].devn + '/api/LfAir/GetQxHourRank',//区县小时排行列表
-  GetXhHbPointsVoc: apiconfig[icode].devn + '/api/XhHb/GetXhHbPointsVoc',//VOC面板数据列表
+  GetXhHbPointsVoc: apiconfig[icode].devm + '/api/XhHb/GetXhHbPointsVoc',//VOC面板数据列表
   GetVideoInfoByType: apiconfig[icode].devn + '/api/Video/GetVideoInfoByType',//获取高空视频监控列表
   GetTownListData: apiconfig[icode].devn + '/api/Town/GetTownList?region=',//乡镇企业列表展示（固安县）
   EmergencyInfoInsert: apiconfig[icode].devn + '/api/EmergencyBulletin/Insert',//新增应急消息
