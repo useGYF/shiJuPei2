@@ -40,8 +40,8 @@ export default {
         path: '/'
       }],
       release: [{
-        site:'http://120.52.157.161',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
-        port: ':8099',//':8063',
+        site:'http://120.52.157.162',// 'http://117.119.97.150',//'http://devgkptplat.zhiscity.com',//'http://gkpt.zq12369.com:8015',//http://117.119.97.150:8063
+        port: ':4016',//':8063',
         path: '/'
       },{
         site: 'http://gkpt.zq12369.com',

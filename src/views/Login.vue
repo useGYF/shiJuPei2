@@ -115,7 +115,7 @@
           method: "post",
           success: function (data) {
             console.log(data)
-            if (data.status > 0) {
+            if ((data.status||data.Status) > 0) {
               _this.Role = data.data.role;
               _this.userId = data.data.id;
               if (_this.Role === 4) {

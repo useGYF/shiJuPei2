@@ -4,7 +4,7 @@
             <!--环境监测-->
             <div class="logo">
                 <img src="../assets/img/logo1.png" alt="logo">
-                <a style="color: #fff;font-size:21px;font-weight: 500;line-height: 56px;font-family: 'Microsoft YaHei' ">固安县环境保护网格化管理平台</a>
+                <a style="color: #fff;font-size:21px;font-weight: 500;line-height: 56px;font-family: 'Microsoft YaHei' ">大数据管理平台</a>
             </div>
            <!---->
             <ul class="bnav">
