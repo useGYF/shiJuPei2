@@ -36,13 +36,13 @@
         },
         mounted() {
             const _this = this;
-            // router.beforeEach((to, from, next) => {
-            //     if (!this.$cookies.get('auth')) {
-            //         next()
-            //         this.$router.push('/login')
-            //     }
-            //     next();
-            // });
+            router.beforeEach((to, from, next) => {
+                if (!this.$cookies.get('auth')) {
+                    next()
+                    this.$router.push('/login')
+                }
+                next();
+            });
             // if (!this.$cookies.get('auth')) {
             //     if (window.location.href.indexOf('login') > -1) {
             //         return
