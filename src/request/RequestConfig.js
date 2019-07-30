@@ -93,7 +93,7 @@ export default {
         break;
       case 'VOCPOLLUTION':
         cf = apiConfig[0];
-        url = 'http://gkpt.zq12369.com:8016/api/XhHb/GetXhHbPoint';
+        url = 'http://gkpt.zq12369.com:8016/api/XhHb/GetXhHbPointsVoc';
         //url = cf.site + cf.port + cf.path + 'api/XhHb/GetXhHbPointsVoc';
         break;
       case 'SENSECHART':

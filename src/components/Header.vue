@@ -8,50 +8,10 @@
             </div>
            <!---->
             <ul class="bnav">
-                <li><a href="#/">实时监测</a></li>
-                <!--<li>-->
-                    <!--<a style="padding: 0 10px" href="#/">-->
-                        <!--实时监测-->
-                    <!--</a>-->
-                <!--</li>-->
-                <!--气象预报-->
-                <!--<li>-->
-                    <!--<a style="padding: 0 10px">气象预报<i style="padding: 0 10px"></i></a>-->
-                    <!--<div class="Fouritem submenu same">-->
-                        <!--<a href="#/dynamicweather">动态风场</a><br/>-->
-                        <!--<a href="#/Weather">天气预报</a><br/>-->
-                        <!--<a href="#/SandDustForecast">沙尘预报</a><br/>-->
-                        <!--<a href="#/FogHazeForecast">雾霾预报</a><br/>-->
-                        <!--<a href="http://60.10.151.86:63317/langfang_release_web" target="_blank">空气质量</a>-->
-                    <!--</div>-->
-                <!--</li>-->
-
-                <!--大数据资源-->
-                <!--<li>-->
-                    <!--<a style="padding: 0 10px">大数据资源<i style="padding: 0 10px"></i></a>-->
-                    <!--<div class="Fiveitem submenu same">-->
-                        <!--<div>-->
-                            <!--<h3>排名</h3>-->
-                            <!--<a href="#/StateControl">省控排名</a>-->
-                            <!--<div class="line"></div>-->
-                            <!--<a href="#/TvocRange">TVOC排名</a>-->
-                        <!--</div>-->
-						<!--<div>-->
-                            <!--<h3>考核</h3>-->
-                            <!--<a href="#/CountyCheck">区县考核</a>-->
-                            <!--<div class="line"></div>-->
-                            <!--<a href="#/CityCheck">乡镇考核</a>-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<h3>统计</h3>-->
-                            <!--<a href="#/TodayData">今日数据</a>-->
-                            <!--<div class="line"></div>-->
-                            <!--<a href="#/SimultaneRate">同期变化率</a><br>-->
-                            <!--<a href="#/RankingStatistics">排名统计</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-
+                <li style="width: 136px;" v-for="(item,index) in JCtargets" v-show="item.visible" :style="'color:#fff;background:'+(item.checked ? '#00EE00' : '#1b9d33')" :data-parent-index="item.parentIndex" :data-parent="item.parentName" :data-index="index" :data-type="item.name" @click="OKQClick">
+                <img :src="item.src" title=""/>
+                <span>{{item.value}}</span>
+              </li>
                 <!--系统后台-退出系统-->
                 <li style="margin-right: 0;">
                     <span class="position-p"></span>
@@ -66,10 +26,13 @@
                 </li>
             </ul>
         </div>
+        <main-handle></main-handle>
     </div>
 </template>
 
 <script>
+import MainHandle from '@/map/handle/MainHandle'
+  import {bus} from '@/js/bus'
     export default {
         name: 'header',
         data () {
@@ -81,7 +44,182 @@
                 tuichuChesSrc: '../../static/imgs/mues/header/btn_quit1.png',
                 userMess:'',
                 isShow:true,
+                 hasSelect:false,
+        kongqi: true,
+        jiankong:true,
+        shiping: true,
+        aclink:false,
+        mlength:4,
+        defaultType:'LAYER_GS',
+        clicksrc:'static/imgs/main/left.png',
+        clickchesrc:'static/imgs/main/right.png',
+                 //实时监测
+        JCtargets: [
+          {
+            name: 'layer_gs',
+            code:'layer_gs',
+            value: '国省控监测',
+            parentName: 'layer_jc',
+            src: 'static/imgs/main/gs.png',
+            checkedSrc: 'static/imgs/main/gs_c.png',
+            checked:false,
+            visible:true,
+            displayName: 'pointname',
+            childs:[{
+              text: 'AQI',
+              fieldName: 'aqi'
+            }, {
+              text: 'PM2.5',
+              fieldName: 'pm25'
+            }, {
+              text: 'PM10',
+              fieldName: 'pm10'
+            }, {
+              text: 'SO2',
+              fieldName: 'so2'
+            }, {
+              text: 'NO2',
+              fieldName: 'no2'
+            }, {
+              text: 'CO',
+              fieldName: 'co'
+            }, {
+              text: 'O3',
+              fieldName: 'o3'
+            }, {
+              text: '综指',
+              fieldName: 'complexindex'
+            }, {
+              text: '温度',
+              fieldName: 'temp'
+            }, {
+              text: '湿度',
+              fieldName: 'humi'
+            }, {
+              text: '风向',
+              fieldName: 'windangle'
+            }, {
+              text: '风力',
+              fieldName: 'windspeed'
+            }]
+          },{
+            name: 'layer_cgq_lcs',
+            parentName: 'layer_jc',
+            value: '六参数传感器',
+            src: 'static/imgs/main/cg.png',
+            checkedSrc: 'static/imgs/main/cg_c.png',
+            checked:false,
+            visible:false,
+            childs: [{
+              text: 'AQI',
+              fieldName: 'aqi'
+            }, {
+              text: 'PM2.5',
+              fieldName: 'pm25'
+            }, {
+              text: 'PM10',
+              fieldName: 'pm10'
+            }, {
+              text: 'SO2',
+              fieldName: 'so2'
+            }, {
+              text: 'NO2',
+              fieldName: 'no2'
+            }, {
+              text: 'CO',
+              fieldName: 'co'
+            }, {
+              text: 'O3',
+              fieldName: 'o3'
+            }]
+          },
+          {
+            name: 'layer_cx',
+            parentName: 'layer_jc',
+            value: '乡镇空气站监测',
+            src: 'static/imgs/main/m_cx.png',
+            checkedSrc: 'static/imgs/main/cx_c.png',
+            checked:false,
+            visible:false,
+            childs: [{
+              text: 'PM2.5',
+              fieldName: 'pm25'
+            }, {
+              text: 'SO2',
+              fieldName: 'so2'
+            },{
+              text: '综指',
+              fieldName: 'com_index'
+            }]
+          },
+          {
+            name: 'layer_gd',
+            value: '工地扬尘监测',
+            parentName: 'layer_jc',
+            src: 'static/imgs/main/gd.png',
+            checkedSrc: 'static/imgs/main/gd_c.png',
+            checked:false,
+            visible:true,
+            childs:[{
+              text: 'PM2.5',
+              fieldName: 'pm25'
+            }, {
+              text: 'PM10',
+              fieldName: 'pm10'
+            }]
+          },
+          {
+            name: 'layer_qy',
+            value: '企业污染源监测',
+            parentName: 'layer_jc',
+            src: 'static/imgs/main/qy.png',
+            checkedSrc: 'static/imgs/main/qy_c.png',
+            checked:false,
+            visible:false,
+            childs:[{
+              text: '烟尘',
+              fieldName: 'smokeStatus'
+            }, {
+              text: 'NOX',
+              fieldName: 'noxStatus'
+            }, {
+              text: 'SO2',
+              fieldName: 'so2Status'
+            }]
+          },
+          {
+            name: 'layer_zt',
+            value: '渣土车GPS',
+            parentName: 'layer_jc',
+            src: 'static/imgs/main/zt.png',
+            checkedSrc: 'static/imgs/main/zt_c.png',
+            checked:false,
+            visible:false,
+            childs:[]
+          },{
+            name: 'layer_cgq_vocs',
+            parentName: 'layer_jc',
+            value: 'VOCs监测',
+            src: 'static/imgs/mues/sixzb/vocw.png',
+            checkedSrc: 'static/imgs/mues/sixzb/vocw_c.png',
+            checked:false,
+            visible:true,
+            childs: []
+          },{
+            name: 'layer_cy',
+            parentName: 'layer_jc',
+            value: '餐饮油烟监测',
+            src: 'static/imgs/main/cyyy.png',
+            checkedSrc: 'static/imgs/main/cyyy_c.png',
+            checked:false,
+            visible:false,
+            childs: []
+          },
+        ],
             }
+        },
+        components: {
+            MainHandle
         },
         mounted(){
         	this.isDuty = this.getlocal('userInfo').isDuty;
@@ -134,6 +272,223 @@
                     this.$router.push('/login')
                 })
             },
+
+      //指标切换点击事件
+      OKQClick(e){
+        let _this = this;
+        if (e.target.nodeName === 'SELECT' || _this.hasSelect) {
+          _this.hasSelect = false;
+          return;
+        }
+        let childElement = e.currentTarget;
+        let imgElement = childElement.querySelector('img');
+        let index = childElement.getAttribute('data-index');
+        let type = childElement.getAttribute('data-type');
+        let parentName = childElement.getAttribute('data-parent');
+        let parentIndex = childElement.getAttribute('data-parent-index');
+        let targets = parentName.toUpperCase() === 'LAYER_JC' ? this.$data.JCtargets : this.$data.ZHtargets;
+        let item = targets[index];
+
+        let hasChecked = false;
+        item.childs && (item.childs.length && (item.checked = !item.checked));
+        imgElement.getAttribute('src') !== item.src ? (imgElement.src = item.src, childElement.style.backgroundColor = '#1b9d33') : (imgElement.src = item.checkedSrc, childElement.style.backgroundColor = '#00EE00', hasChecked = true);
+
+        bus.$emit('targetMainLayer', type, hasChecked);
+        this.rightPanel(hasChecked,type);
+      },
+
+      //删除指定对象
+      removeObjWithArr(_arr, _obj) {
+            let length = _arr.length;
+            for (let i = 0; i < length; i++) {
+                if (_arr[i] == _obj) {
+                    if (i == 0) {
+                        _arr.shift(); //删除并返回数组的第一个元素
+                        return;
+                    }
+                    else if (i == length - 1) {
+                        _arr.pop();  //删除并返回数组的最后一个元素
+                        return;
+                    }
+                    else {
+                        _arr.splice(i, 1); //删除下标为i的元素
+                        return;
+                    }
+                }
+            }
+        },
+      rightPanel(hasChecked,type){
+          //已有对象不添加
+          if(this.$store.state.menuData){
+              //console.log(Array.isArray(this.$store.state.menuData));
+              for(let i=0;i<this.$store.state.menuData.length;i++){
+                  let item = this.$store.state.menuData[i];
+                  if(item.show_xs === type){
+                      //删除选项
+                      let keyarr = this.$store.state.menuData;
+                      for (let k = 0; k < keyarr.length; k++) {
+                          if (keyarr[k].show_xs == type) {
+                              // 删除指定对象
+                              this.removeObjWithArr(keyarr, keyarr[k])
+                          }
+                      }
+                  }
+              }
+          };
+        //动态添加右侧菜单
+        if (hasChecked && type != 'layer_lk' && type != 'layer_zt' && type != 'layer_hw' && type != 'layer_jy') {
+          //添加对应右侧菜单
+          switch (type) {
+            case 'layer_gs':
+              this.$store.state.menuData.unshift({
+                title: '国省',
+                title_tx: '国省控点',
+                show_xs: 'layer_gs',
+                url: 'static/imgs/indeximgs/morenimg/icon_fang.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_fang.png'
+              });
+              bus.$emit('menuative', '国省');
+              break;
+            case 'layer_cgq_lcs':
+              this.$store.state.menuData.unshift({
+                title: '六参',
+                title_tx: '六参数',
+                show_xs: 'layer_cgq_lcs',
+                url: 'static/imgs/indeximgs/morenimg/icon_yuan1.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_yuan1.png'
+              });
+              bus.$emit('menuative', '六参');
+              break;
+            case 'layer_cgq_vocs':
+              this.$store.state.menuData.unshift({
+                title: 'VOC',
+                title_tx: 'VOC监测',
+                show_xs: 'layer_cgq_vocs',
+                url: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_Triangle_3.png'
+              });
+              bus.$emit('menuative', 'VOC');
+              break;
+            case 'layer_cx':
+              this.$store.state.menuData.unshift({
+                title: '乡镇',
+                title_tx: '乡镇统计',
+                show_xs: 'layer_cx',
+                url: 'static/imgs/indeximgs/morenimg/icon_ditu2.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_ditu2.png'
+              });
+              bus.$emit('menuative', '乡镇');
+              break;
+            case 'layer_gd':
+              this.$store.state.menuData.unshift({
+                title: '工地',
+                title_tx: '工地扬尘',
+                show_xs: 'layer_gd',
+                url: 'static/imgs/indeximgs/morenimg/icon_gd.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_gd.png'
+              });
+              bus.$emit('menuative', '工地');
+              break;
+            case 'layer_qy':
+              this.$store.state.menuData.unshift({
+                title: '企业',
+                title_tx: '企业监测',
+                show_xs: 'layer_qy',
+                url: 'static/imgs/indeximgs/morenimg/icon_enterprise.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_enterprise.png'
+              });
+              bus.$emit('menuative', '企业');
+              break;
+            case 'layer_yqd':
+              this.$store.state.menuData.unshift({
+                title: '静态',
+                title_tx: '大气排放源清单',
+                show_xs: 'layer_yqd',
+                url: 'static/imgs/indeximgs/morenimg/icon_jiayou.png',
+                url_one: 'static/imgs/indeximgs/morenimg/icon_jiayou.png'
+              });
+              bus.$emit('menuative', '静态');
+              break;
+            case 'layer_qm':
+              this.$store.state.menuData.unshift({
+                title: '案件',
+                title_tx: '案件',
+                show_xs: 'layer_qm',
+                url: 'static/imgs/indeximgs/morenimg/anjian.png',
+                url_one: 'static/imgs/indeximgs/morenimg/anjian.png'
+              });
+              bus.$emit('menuative', '案件');
+              break;
+            case 'layer_sp_slw':
+              this.$store.state.menuData.unshift({
+                title: '散乱视频',
+                title_tx: '散乱污视频',
+                show_xs: 'layer_sp_slw',
+                url: 'static/imgs/indeximgs/morenimg/slw.png',
+                url_one: 'static/imgs/indeximgs/morenimg/slw.png'
+              });
+              bus.$emit('menuative', '散乱视频');
+              break;
+            case 'layer_sp_jg':
+              // this.$store.state.menuData.unshift({
+              //   title: '秸秆焚烧',
+              //   title_tx: '秸秆焚烧',
+              //   show_xs: 'layer_sp_jg',
+              //   url: 'static/imgs/mues/video/jg.png',
+              //   url_one: 'static/imgs/mues/video/jg_c.png'
+              // });
+              //bus.$emit('menuative', '秸秆焚烧');
+              break;
+            case 'layer_xcy':
+              this.$store.state.menuData.unshift({
+                title: '巡查员',
+                title_tx: '巡查员',
+                show_xs: 'layer_xcy',
+                url: 'static/imgs/indeximgs/morenimg/xcy.png',
+                url_one: 'static/imgs/indeximgs/morenimg/xcy.png'
+              });
+              bus.$emit('menuative', '巡查员');
+              break;
+            default:
+              bus.$emit('menuative', '统计');
+              break;
+          }
+          console.log(type);
+        } else {
+          //删除选项
+          let keyarr = this.$store.state.menuData;
+          for (let i = 0; i < keyarr.length; i++) {
+            //console.log(keyarr[i]);
+            if (keyarr[i].show_xs == type) {
+              // console.log('该删除我了')
+              console.log(keyarr[i])
+              // 删除指定对象
+              this.removeObjWithArr(keyarr, keyarr[i])
+            }
+          }
+        }
+      },
+
+      //删除指定对象
+      removeObjWithArr(_arr, _obj) {
+        let length = _arr.length;
+        for (let i = 0; i < length; i++) {
+          if (_arr[i] == _obj) {
+            if (i == 0) {
+              _arr.shift(); //删除并返回数组的第一个元素
+              return;
+            }
+            else if (i == length - 1) {
+              _arr.pop();  //删除并返回数组的最后一个元素
+              return;
+            }
+            else {
+              _arr.splice(i, 1); //删除下标为i的元素
+              return;
+            }
+          }
+        }
+      },
 
         }
     }

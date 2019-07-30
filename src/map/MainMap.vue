@@ -1,7 +1,7 @@
 <template>
   <div class="main-map-content">
     <div id="main_map"></div>
-    <main-layer-handle></main-layer-handle>
+    <!-- <main-layer-handle></main-layer-handle> -->
     <el-dialog title="" :visible.sync="dialogVisible" size="large" width="90%" top="2%" @close="dialogCloseEvent">
       <div class="target-panel">
         <ul>

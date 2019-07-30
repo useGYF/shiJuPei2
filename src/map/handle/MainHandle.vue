@@ -100,7 +100,7 @@
           case 'LAYER_CG':
           case 'LAYER_CGQ_LCS':
           case 'LAYER_CGQ_GSX':
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
           case 'LAYER_GS':
           case 'LAYER_GD':
           case 'LAYER_QY':
@@ -299,7 +299,7 @@
               case 'LAYER_QY':
                 urlHS += `Company/${folderName}/${fileName}`;
                 break;
-              case 'LAYER_CGQ_VOC':
+              case 'LAYER_CGQ_VOCS':
                 urlHS += `TVOC/${folderName}/${fileName}`;
                 break;
             }
@@ -388,7 +388,7 @@
           case 'LAYER_CG':
           case 'LAYER_CGQ_LCS':
           case 'LAYER_CGQ_GSX':
-            //pmsKey = uppercaseType === 'LAYER_CG' ? undefined : (uppercaseType === 'LAYER_CGQ_LCS' ? '' : (uppercaseType === 'LAYER_CGQ_GSX' ? '' : (uppercaseType === 'LAYER_CGQ_VOC' ? '' : undefined)));
+            //pmsKey = uppercaseType === 'LAYER_CG' ? undefined : (uppercaseType === 'LAYER_CGQ_LCS' ? '' : (uppercaseType === 'LAYER_CGQ_GSX' ? '' : (uppercaseType === 'LAYER_CGQ_VOCS' ? '' : undefined)));
             let urlLCS = RequestHandle.getRequestUrl('MAINSIXPOLLUTION');
             //pmsKey && (pms = {key: pmsKey});
             fieldName = 'aqi';
@@ -396,7 +396,7 @@
             lsUrl.push(urlLCS);
             break;
           case 'LAYER_VOC':
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             let urlVOC = RequestHandle.getRequestUrl('VOCPOLLUTION');
             fieldName = 'tVOC_V';
             displayName = 'pointName';
@@ -749,7 +749,7 @@
           case 'LAYER_CGQ_LCS':
             bus.$emit('loadMarkerData', data, fieldName);
             break;
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             break;
           case 'LAYER_GS':
             bus.$emit('refreshRanking', data.filter(v => (v.isLf && v.dataLevel === '1')), fieldName);
@@ -837,7 +837,7 @@
       getMarkerLabelState(data, ptType, fieldName) {
         let value = data[fieldName] || data[fieldName.toLocaleLowerCase()];
         let level = 0;
-        if (ptType.toUpperCase() === 'LAYER_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOC') {
+        if (ptType.toUpperCase() === 'LAYER_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS') {
           level = data.polluLevel || 0;//getVOCLeveColorIndex(data.tVOC_V) || 0;
           value = (data[fieldName] === null || data[fieldName] === undefined) ? '--' : data[fieldName];
         } else if (ptType.toUpperCase() === 'LAYER_QY') {
@@ -901,7 +901,7 @@
       //获取警报Label
       getLabelRed(data, ptType, fieldName, pt, waringType) {
         let labelRed = undefined;
-        if (ptType.toUpperCase() === 'LAYER_GS' || ptType.toUpperCase() === 'LAYER_CGQ_LCS' || ptType.toUpperCase() === 'LAYER_CGQ_VOC') {
+        if (ptType.toUpperCase() === 'LAYER_GS' || ptType.toUpperCase() === 'LAYER_CGQ_LCS' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS') {
           let hasRed = data[fieldName.toUpperCase() === 'TVOC_V' ? 'IsAlert' : (fieldName + 'IsAlert')] || false;
           //警报
           if (hasRed) {
@@ -909,8 +909,8 @@
             if (waringType) {
               let elContext = '<div class="pulse"></div><div class="pulse1"></div>';
               let opts = {
-                position: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOC' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt,//ptType.toUpperCase() === 'LAYER_CGQ_LCS' ||
-                offset: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_CGQ_LCS' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOC' || ptType.toUpperCase() === 'LAYER_GD') ? new BMap.Size(-35, -35) : new BMap.Size(-35, -35)
+                position: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt,//ptType.toUpperCase() === 'LAYER_CGQ_LCS' ||
+                offset: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_CGQ_LCS' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS' || ptType.toUpperCase() === 'LAYER_GD') ? new BMap.Size(-35, -35) : new BMap.Size(-35, -35)
               };
               labelRed = new BMap.Label(elContext, opts);
               labelRed.setStyle({
@@ -922,7 +922,7 @@
             } else {
               let imgUrl = 'static/imgs/main/red10.gif';//this.getMarkerIcon(type);
               let icon = new BMap.Icon(imgUrl, new BMap.Size(62, 62));//|| ptType.toUpperCase() === 'LAYER_CGQ_LCS'
-              labelRed = new BMap.Marker((ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOC' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt, {
+              labelRed = new BMap.Marker((ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt, {
                 //marker = new BMap.Marker((lyType.toUpperCase() === 'LAYER_GS') ? pt:conPoint, {
                 icon: icon,
                 offset: new BMap.Size(-5, -5)
@@ -940,7 +940,7 @@
         ptType = ptType.toUpperCase();
         switch (ptType) {
           case 'LAYER_VOC':
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             level = data.polluLevel || 0;//getVOCLeveColorIndex(data.tVOC_V) || 0;
             break;
           case 'LAYER_QY':
@@ -1031,7 +1031,7 @@
           case 'LAYER_CGQ_GSX':
             iconName = 'cgq-gsx-';
             break;
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             iconName = 'cgq-voc-';
             break;
           case 'LAYER_VOC':
@@ -1188,7 +1188,7 @@
               pms = {stationid: attributes.stationid, pollute: fieldName, dataType: attributes.dataType || ''};
               displayName = 'stationname';
               break;
-            case 'LAYER_CGQ_VOC':
+            case 'LAYER_CGQ_VOCS':
               //res = t.setVOCInfoWindow(attributes);
               charUrl = RequestHandle.getRequestUrl('VOCCHART');
               pms = {stationid: attributes.stationId || attributes.id};
@@ -1244,7 +1244,7 @@
           }
 
           (this.searchInfoWindow = new BMapLib.SearchInfoWindow(t.map, res || '无数据', {
-            title:infowindowTitle?infowindowTitle: '<sapn style="font-size:16px" ><b title="' + (attributes[displayName] || '') + '">' + (attributes[displayName] || '') + '</b>' + '</span><span id="vocvideo" class="class-vidoes"  style="display:' + ((ptType.toUpperCase() === 'LAYER_CGQ_VOC') ? 'block' : 'none') + '">视频点击播放</span>',             //标题
+            title:infowindowTitle?infowindowTitle: '<sapn style="font-size:16px" ><b title="' + (attributes[displayName] || '') + '">' + (attributes[displayName] || '') + '</b>' + '</span><span id="vocvideo" class="class-vidoes"  style="display:' + ((ptType.toUpperCase() === 'LAYER_CGQ_VOCS') ? 'block' : 'none') + '">视频点击播放</span>',             //标题
             width: infoWidth,
             height: "auto",
             enableAutoPan: true,
@@ -1302,7 +1302,7 @@
                   t.searchInfoWindow.setContent(gdContent);
                   t.setGDChart(attributes.deviceid || attributes.cityid, data.valuelist || data[0].valuelist || [], fieldName);
                   break;
-                case 'LAYER_CGQ_VOC':
+                case 'LAYER_CGQ_VOCS':
 
                   let vocContent = t.setVOCInfoWindow(data);
                   t.searchInfoWindow.setContent(vocContent);
@@ -2217,7 +2217,7 @@ width:100%;
           let conPoint = this.wgsPointToBd(pt);
           let imgUrl = this.getMarkerIcon(type);
           let icon = new BMap.Icon(imgUrl, new BMap.Size(25, 25));//|| lyType.toUpperCase() === 'LAYER_CGQ_LCS'
-          marker = new BMap.Marker((lyType.toUpperCase() === 'LAYER_SP' || lyType.toUpperCase() === 'LAYER_SP_VOC' || lyType.toUpperCase() === 'LAYER_CGQ_VOC' || lyType.toUpperCase() === 'LAYER_GD') ? conPoint : pt, {
+          marker = new BMap.Marker((lyType.toUpperCase() === 'LAYER_SP' || lyType.toUpperCase() === 'LAYER_SP_VOC' || lyType.toUpperCase() === 'LAYER_CGQ_VOCS' || lyType.toUpperCase() === 'LAYER_GD') ? conPoint : pt, {
             //marker = new BMap.Marker((lyType.toUpperCase() === 'LAYER_GS') ? pt:conPoint, {
             icon: icon,
             offset: new BMap.Size(0, 0)
@@ -2259,7 +2259,7 @@ width:100%;
             index = this.getPollutionState(Math.ceil(vl) || 0, fieldName);//getPM10LevelIndex(Math.ceil(vl) || 0) || 0;
             hasLabel = true;
             break;
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             index = value.polluLevel || 0;//getVOCLeveColorIndex(Math.ceil(vl) || 0) || 0;
             vl = value[fieldName];
             hasLabel = true;
@@ -2276,7 +2276,7 @@ width:100%;
           let bgcolor = getColorByIndex(index) || '#999';
           let conPoint = this.wgsPointToBd(pt);//|| ptType.toUpperCase() === 'LAYER_CGQ_LCS'
           let opts = {
-            position: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOC' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt,
+            position: (ptType.toUpperCase() === 'LAYER_SP' || ptType.toUpperCase() === 'LAYER_SP_VOC' || ptType.toUpperCase() === 'LAYER_CGQ_VOCS' || ptType.toUpperCase() === 'LAYER_GD') ? conPoint : pt,
             offset: new BMap.Size(-9, 24)
           };
           label = new BMap.Label(((vl === null || vl === undefined || vl === '') ? '--' : vl) + '<div class="arrow" style="width: 0;  height: 0; border-left: 8px solid transparent; border-bottom: 8px solid; border-right: 8px solid transparent; color:' + bgcolor + '; position: absolute;  margin-top:-30px;margin-left:8px  " ></div>', opts)  // 创建文本标注对象
@@ -2310,7 +2310,7 @@ width:100%;
           boxShadow: '1px 3px 4px rgba(0,0,0,0.18)',
           padding: 0
         });
-        label.setPosition((lyType.toUpperCase() === 'LAYER_SP' || lyType.toUpperCase() === 'LAYER_SP_VOC' || lyType.toUpperCase() === 'LAYER_CGQ_VOC' || lyType.toUpperCase() === 'LAYER_GD') ? conPoint : point);//|| lyType.toUpperCase() === 'LAYER_CGQ_LCS'
+        label.setPosition((lyType.toUpperCase() === 'LAYER_SP' || lyType.toUpperCase() === 'LAYER_SP_VOC' || lyType.toUpperCase() === 'LAYER_CGQ_VOCS' || lyType.toUpperCase() === 'LAYER_GD') ? conPoint : point);//|| lyType.toUpperCase() === 'LAYER_CGQ_LCS'
         displayValue && label.setOffset(new BMap.Size(-((displayValue.length * 14 + 32) / 2), 22));
         this.map.getZoom() >= this.maxZoom ? label.show() : label.hide();
         lyType.toUpperCase() === 'LAYER_GS' && (label.show());
@@ -2765,7 +2765,7 @@ width:100%;
           case 'LAYER_CGQ_LCS':
             rtValue = {pk: 'stationid', index: 1};
             break;
-          case 'LAYER_CGQ_VOC':
+          case 'LAYER_CGQ_VOCS':
             rtValue = {pk: 'stationId', index: 2};
             break;
           case 'LAYER_CX':

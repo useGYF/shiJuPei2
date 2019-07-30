@@ -189,19 +189,19 @@
             //动画001伸出
             shengchu(){
                 $('#list')[0].style.transition = 'all 50ms';
-                $('#list')[0].style.WebkitTransform = "translate(467px)";
-                $('#list')[0].style.transform = "translate(467px)";
+                $('#list')[0].style.WebkitTransform = "translate(-467px)";
+                $('#list')[0].style.transform = "translate(-467px)";
                 $('.meun_right')[0].style.right = '467px';
                 $('.line_bottom')[0].style.left = '-464px';//'-342px';
-                $('.line_top')[0].style.left = '-480px';
+                $('.line_top')[0].style.left = '480px';
             },
             //动画002收回
             shouhui(){
                 $('#list')[0].style.transition = 'all 500ms';
                 $('#list')[0].style.transform = "translate(0)";
                 $('.meun_right')[0].style.right = '0px';
-                $('.line_bottom')[0].style.left = '-445px';//'-309px';
-                $('.line_top')[0].style.left = '-455px';
+                $('.line_bottom')[0].style.left = '466px';//'-309px';
+                $('.line_top')[0].style.left = '477px';
             },
             //table点击事件
             RowCurrentChange(val) {
@@ -334,7 +334,7 @@
         background-color: #666;
         position: absolute;
         top: 60px;
-        right: 0;
+        left: 0;
 
         .border_bottom {
             width: 100%;
@@ -349,7 +349,7 @@
             width: 467px;
             height: 100%;
             top: 56px;
-            right: 0;
+            left: 0;
             z-index: 9;
             transition: all 500ms;
             box-shadow: -10px 0px 10px rgba(36,148,242,0.43);
@@ -357,6 +357,7 @@
 
                 .line_top {
                     position: absolute;
+                    width: 410px;
                     left: -455px;
                     top: 48px;
                     height: 46px;
@@ -407,6 +408,7 @@
                 }
                 .main {
                     height: auto;
+                    margin-left: 20px;
                     .table_tie {
                     width: 430px;
                     height: 405px;
@@ -555,6 +557,7 @@
                 }
             }
             .meun_right{
+                display: none;
                 position: absolute;
                 top: 0px;
                 right: 0;

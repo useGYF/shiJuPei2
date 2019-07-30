@@ -109,7 +109,7 @@
                 this.setPageTable(10, 1);
             },
             //设置分页所需要数据
-            SetDataList(data, type,hasFirst = false) {
+            SetDataList(data, type) {
                 this.data = data;
                 this.allData = [];
                 let i = 1;
@@ -128,10 +128,7 @@
                         tableData.pianQu = item.pianQu;//片区
                         this.allData.push(tableData);
                     })
-                    //地图传送线
-                   bus.$emit('loadCumulative', dt1, 'layer_cgq_voc', 'tVOC_V', 'pointName');
-                //}
-
+                 
             },
             //table点击事件
             RowCurrentChange(val) {
