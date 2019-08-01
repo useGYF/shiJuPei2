@@ -196,11 +196,13 @@
       position: absolute;
       width: 497px;
       height: 410px;
-      left: 60%;
-      top: 17%;
-      background: rgba(0, 0, 0, 0.5);
+      left: 50%;
+      margin-left: -205px;
+      top: 15%;
+      background: rgba(44, 133, 98, 0.5);
+  
       .input {
-        color: #fff;
+        color: #000;
         .warp-dl-tu {
           width: 100%;
           height: 90px;
@@ -221,7 +223,7 @@
         input {
           width: 240px;
           height: 28px;
-          color: #fff;
+          color: #000;
           border: none;
           background: rgba(0, 0, 0, 0);
           line-height: 28px;
@@ -243,7 +245,7 @@
           strong {
             display: inline-block;
             width: 60px;
-            color: #fff;
+            color: #000;
             font-size: 16px;
             font-weight: bold;
           }
@@ -259,7 +261,7 @@
           strong {
             display: inline-block;
             width: 60px;
-            color: #fff;
+            color: #000;
             font-size: 16px;
             font-weight: bold;
           }
