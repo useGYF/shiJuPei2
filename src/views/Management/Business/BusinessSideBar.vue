@@ -8,7 +8,8 @@
 					<el-menu default-active="Case-Review" :unique-opened=true router  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
 						<el-submenu index="active2" >
 							<template slot="title"><i class="icon-aj"></i>案件管理</template>
-							<el-menu-item index="Case-Review">案件</el-menu-item>
+                            <el-menu-item index="Case-Review">案件列表</el-menu-item>
+							<el-menu-item index="Case-Input">案件录入</el-menu-item>
 						</el-submenu>
 					</el-menu>
 				</el-col>

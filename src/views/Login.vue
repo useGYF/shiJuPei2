@@ -1,38 +1,23 @@
 <template>
   <div class="login">
-    <!---->
-    <!--<img src="../assets/img/logo.png" alt="" style="position: absolute;top: 40px;left: 40px;">-->
-    <!--登录页面-->
-    <div class="form">
-      <div class="input">
-        <div class="warp-dl-tu">
-          <img src="../assets/img/logo1.png" alt="">
-          <p>固安县环境保护网格化管理平台</p>
-        </div>
-        <!--<h1 style="text-align: left;padding-left: 80px;margin-top: 45px">欢迎登录</h1>-->
-        <div class="user">
-          <strong>用户名</strong><input class="us" v-model="userName" type="text" placeholder="请输入用户名">
-        </div>
-        <div class="pass">
-          <strong>密码</strong><input class="pa" v-model="passWord" type="password" placeholder="请输入密码"
-                                    @keyup.enter="login">
-        </div>
-        <div class="tishi">
-          用户名或密码不正确
-        </div>
-        <div class="butn">
-          <button @click="login">登录{{userData}}</button>
-        </div>
+      <!--登录页面-->
+      <div class="form">
+          <div class="input">
+              <div class="warp-dl-tu">
+                  <p style="padding-left:70px">大数据管理平台</p>
+              </div>
+              <div class="user"> <strong>用户名</strong>
+                  <input class="us" v-model="userName" type="text" placeholder="请输入用户名">
+              </div>
+              <div class="pass"> <strong>密码</strong>
+                  <input class="pa" v-model="passWord" type="password" placeholder="请输入密码" @keyup.enter="login">
+              </div>
+              <div class="tishi">用户名或密码不正确</div>
+              <div class="butn">
+                  <button @click="login">登录{{userData}}</button>
+              </div>
+          </div>
       </div>
-    </div>
-    <!--<div class="bottom_title">-->
-    <!--<div class="title_banquan">-->
-    <!--<p>版权所有：廊坊市环保局,廊坊市大气办 <span>技术支持：千人计划PM2.5特别防治小组，廊坊市智慧环境生态产业研究院</span></p>-->
-    <!--</div>-->
-    <!--<div class="img-qianren">-->
-    <!--<img style="width: 64px" src="../assets/img/logo_jishu.png" alt="">-->
-    <!--</div>-->
-    <!--</div>-->
   </div>
 </template>
 
